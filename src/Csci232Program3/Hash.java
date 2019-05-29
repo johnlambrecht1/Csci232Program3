@@ -20,7 +20,7 @@ public class Hash {
     public void setMaxSize(){
         maxSize = (int)Math.round(table.length * threshold);
     }
-    public void checkKey(int key){
+    public Entry checkKey(int key){
         if (key>arraySize-1){
             System.out.println("The table is too small for that key");
         }else{
@@ -28,7 +28,17 @@ public class Hash {
                 System.out.println("That location is still empty");
             }else{
                 System.out.println(table[key].getValue());
+                return table[key];
             }
+        }
+        return null;
+    }
+    public void remove(int key){
+        if (table[key]!=null){
+            System.out.println("That location is already empty");
+        }else{
+            table[key]=null;
+            itemsInArray--;
         }
     }
     public void setKey(int value){
@@ -93,10 +103,4 @@ public class Hash {
             }
         }
     }
-//    public void hashFunction(String[] stringsForArray, String[] myArray){
-//        for (int i = 0;i<stringsForArray.length; i++){
-//            String newElementVal = stringsForArray[i];
-//            myArray[Integer.parseInt(newElementVal)] = newElementVal;
-//        }
-//    }
 }
